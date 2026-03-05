@@ -20,12 +20,20 @@ This repo keeps only local runtime artifacts (compose, profiles, minecraft confi
 1. Prepare keys:
    - `cp keys.example.json keys.json`
    - set `OPENROUTER_API_KEY` in `keys.json` or via environment variable
-2. Create host bind-mount directory as your user:
-   - `mkdir -p bots`
-3. Optional branch override (default is `develop`):
+2. Set host user mapping:
+   - `BOT_UID=$(id -u)`
+   - `BOT_GID=$(id -g)`
+3. Create host bind-mount directories as your user:
+   - `mkdir -p bots/bot_or_1`
+4. Optional branch override (default is `develop`):
    - `export MINDCRAFT_REF=develop`
-4. Start:
-   - `docker compose up --build`
+5. Start with one of these modes:
+   - No GPU / CPU only:
+     - `docker compose up --build`
+   - NVIDIA GPU:
+     - `docker compose -f docker-compose.yml -f docker-compose.nvidia.yml up --build`
+   - AMD GPU (ROCm-capable host):
+     - `docker compose -f docker-compose.yml -f docker-compose.amd.yml up --build`
 
 ## Notes
 
