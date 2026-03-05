@@ -5,6 +5,28 @@ Small user-focused demo setup for [Mindcraft](https://github.com/mindcraft-bots/
 - [Ollama](https://github.com/ollama/ollama) in [Docker](https://www.docker.com/) for local LLM inference
 - 2 bot profiles running through upstream `mindcraft`
 
+## Prerequisites
+
+- [Git](https://git-scm.com/) installed
+- [Docker](https://www.docker.com/) installed and running
+- Optional: Minecraft Java client `1.21.6` if you want to join the server and watch bots in-game
+
+## Getting Started
+
+1. Clone this repo:
+
+   ```shell
+   git clone https://github.com/Wuodan/mindcraft-test.git
+   ```
+
+2. Enter the project folder:
+
+   ```shell
+   cd mindcraft-test
+   ```
+
+3. Continue with Quickstart below.
+
 ## Quickstart
 
 1. Copy env template:
