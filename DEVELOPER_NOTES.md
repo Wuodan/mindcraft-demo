@@ -21,7 +21,7 @@ docker run -d --name mc-bukkit-bootstrap \
   -e EULA=TRUE \
   -e TYPE=PAPER \
   -e VERSION=1.21.6 \
-  itzg/minecraft-server@sha256:cce41161e946a6a34ee6993b093bf3ed9a3942bd6b2fcf24d9d2797941884b4e
+  itzg/minecraft-server:java25
 ```
 
 2. Wait until startup finishes (or at least until config files are generated):
@@ -52,4 +52,4 @@ docker rm -f mc-bukkit-bootstrap
 ### Notes
 
 - Keep `TYPE` and `VERSION` aligned with your `docker-compose.yml`.
-- If you change the pinned `itzg/minecraft-server` image digest, regenerate this file again.
+- If you change the `itzg/minecraft-server` tag or the Minecraft version, regenerate this file again.
