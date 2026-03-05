@@ -93,7 +93,7 @@ Profiles use:
 
 Current defaults:
 - model: Sweaterdog/Andy-4:latest
-- code_model: qwen2.5-coder:7b
+- code_model: qwen2.5-coder:3b
 
 Please read these links directly and base recommendations on them:
 - https://ollama.com/Sweaterdog/Andy-4
