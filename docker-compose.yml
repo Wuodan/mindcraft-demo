@@ -21,7 +21,11 @@ services:
 
   ollama:
     image: ollama/ollama:latest
+    gpus: all
     restart: unless-stopped
+    environment:
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
     ports:
       - "11434:11434"
     volumes:
