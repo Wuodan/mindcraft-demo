@@ -117,11 +117,24 @@ For non-Ollama providers:
 
 ## Settings Override
 
-Upstream default settings:
+Mindcraft default settings:
 - `https://raw.githubusercontent.com/mindcraft-bots/mindcraft/refs/heads/develop/settings.js`
+- `https://github.com/mindcraft-bots/mindcraft/blob/develop/settings.js`
 
 This repo overrides selected values via `SETTINGS_JSON` in `docker-compose.yml`.
 Extend that JSON object to override more settings (for example `max_messages`, `num_examples`, `init_message`).
+
+### In-Game Chat Verbosity
+
+If bots are too chatty in Minecraft chat, adjust these `SETTINGS_JSON` keys in `docker-compose.yml`:
+
+- `chat_ingame`: enable/disable bot response messages in Minecraft chat
+- `narrate_behavior`: enable/disable automatic action narration (for example "Picking up item!")
+- `chat_bot_messages`: enable/disable bot-to-bot public chat messages
+
+Another related setting in the same settings file:
+
+- `only_chat_with`: limits who bots listen/respond to for general chat
 
 ## Cleanup
 
