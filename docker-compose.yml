@@ -58,6 +58,7 @@ services:
       context: ${MINDCRAFT_REPO:-https://github.com/mindcraft-bots/mindcraft.git}#${MINDCRAFT_REF:-develop}
       dockerfile: Dockerfile
     image: mindcraft-bot:local
+    user: "${BOT_UID:-1000}:${BOT_GID:-1000}"
     depends_on:
       minecraft:
         condition: service_healthy
