@@ -74,8 +74,7 @@ services:
           "port": 55916,
           "auto_open_ui": false,
           "profiles": [
-            "./profiles/bot_or_1.json",
-            "./profiles/bot_or_2.json"
+            "./profiles/bot_or_1.json"
           ],
           "init_message": "Immediately start autonomous goal mode by calling !goal(...) for this objective: obtain and equip a full diamond armor set (diamond_helmet, diamond_chestplate, diamond_leggings, diamond_boots) and one diamond_sword for yourself as fast as possible while continuously managing your own survival and well-being (health, safety, food, and shelter as needed). You may choose any intermediate strategy, including storing items and subgoals. Keep working until complete. When complete, send exactly TASK_DONE_DIAMOND_KIT in chat, then call !endGoal.",
           "allow_insecure_coding": true,
