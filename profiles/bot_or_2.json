@@ -2,7 +2,7 @@
     "name": "bot_or_2",
     "model": {
         "api": "ollama",
-        "model": "qwen3:8b",
+        "model": "Sweaterdog/Andy-4:latest",
         "url": "http://ollama:11434"
     },
     "code_model": {
