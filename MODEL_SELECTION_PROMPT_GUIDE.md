@@ -10,6 +10,65 @@ Collect these three values:
 - GPU model + VRAM (for example `NVIDIA RTX 4060 8GB`)
 - System RAM (for example `32GB`)
 
+### Command Snippets To Get These Values
+
+Windows (PowerShell):
+
+```powershell
+# CPU model
+(Get-CimInstance Win32_Processor).Name
+
+# GPU model + VRAM (GB)
+Get-CimInstance Win32_VideoController |
+  Select-Object Name, @{Name='VRAM_GB';Expression={[math]::Round($_.AdapterRAM / 1GB, 1)}}
+
+# System RAM (GB)
+[math]::Round((Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory / 1GB, 1)
+```
+
+RedHat/Fedora (bash):
+
+```bash
+# CPU model
+lscpu | awk -F: '/Model name/ {gsub(/^[ \t]+/, "", $2); print $2}'
+
+# GPU model
+lspci | grep -Ei 'vga|3d|display'
+
+# System RAM
+free -h | awk '/Mem:/ {print $2}'
+
+# NVIDIA VRAM (if NVIDIA drivers/tools are installed)
+nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
+
+# AMD VRAM (if ROCm tools are installed)
+rocm-smi --showproductname --showmeminfo vram
+```
+
+Debian/Ubuntu (bash):
+
+```bash
+# CPU model
+lscpu | awk -F: '/Model name/ {gsub(/^[ \t]+/, "", $2); print $2}'
+
+# GPU model
+lspci | grep -Ei 'vga|3d|display'
+
+# System RAM
+free -h | awk '/Mem:/ {print $2}'
+
+# NVIDIA VRAM (if NVIDIA drivers/tools are installed)
+nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
+
+# AMD VRAM (if ROCm tools are installed)
+rocm-smi --showproductname --showmeminfo vram
+```
+
+If `lscpu` or `lspci` are missing:
+
+- Debian/Ubuntu: `sudo apt install util-linux pciutils`
+- RedHat/Fedora: `sudo dnf install util-linux pciutils`
+
 ## 2) Use This Prompt Template
 
 Replace placeholders and paste into your browser AI:
@@ -72,4 +131,3 @@ Replace only these fields unless you intentionally change more:
 - `model.model`
 - `code_model.model`
 - `embedding.model`
-
