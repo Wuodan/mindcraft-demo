@@ -96,6 +96,8 @@ Most users can keep `.env` unchanged.
 - If you want another upstream source/branch for image build:
   - set `MINDCRAFT_REPO`
   - set `MINDCRAFT_REF`
+- Bot startup objective prompt:
+  - set `INIT_MESSAGE`
 - If you use non-Ollama providers, add API keys in `.env`:
   - key names: `https://raw.githubusercontent.com/mindcraft-bots/mindcraft/refs/heads/develop/keys.example.json`
   - syntax example: `OPENROUTER_API_KEY=sk-or-v1-...`

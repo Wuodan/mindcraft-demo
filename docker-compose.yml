@@ -81,7 +81,7 @@ services:
             "./profiles/bot_or_1.json",
             "./profiles/bot_or_2.json"
           ],
-          "init_message": "Immediately start autonomous goal mode with !goal(...) for this objective: obtain and equip a full diamond armor set (diamond_helmet, diamond_chestplate, diamond_leggings, diamond_boots) and one diamond_sword as fast as possible while staying alive. Use staged progression: gather wood/cobblestone -> stone tools -> iron tools and shield -> mine diamonds -> craft and equip full diamond armor and one diamond_sword. Do NOT output TASK_DONE_DIAMOND_KIT and do NOT call !endGoal until you have actually equipped all four diamond armor pieces and have a diamond_sword ready.",
+          "init_message": "${INIT_MESSAGE:-Start autonomous goal mode: obtain and equip full diamond armor and one diamond sword while staying alive. Prioritize survival and sustainability: keep food available, avoid low-health risks, and maintain a safe base with storage. Suggested progression: basic tools -> iron tools/armor and shield -> diamond mining -> craft/equip full diamond kit. Only end the goal when full diamond armor is equipped and a diamond sword is ready.}",
           "chat_ingame": true,
           "allow_insecure_coding": true,
           "narrate_behavior": true,
