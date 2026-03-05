@@ -15,11 +15,11 @@ cp .env.example .env
 
 2. Start (pick one):
 - CPU only:
-  - `docker compose up -d --build`
+  - `docker compose up -d`
 - NVIDIA GPU:
-  - `docker compose -f docker-compose.yml -f docker-compose.nvidia.yml up -d --build`
+  - `docker compose -f docker-compose.yml -f docker-compose.nvidia.yml up -d`
 - AMD GPU (ROCm host):
-  - `docker compose -f docker-compose.yml -f docker-compose.amd.yml up -d --build`
+  - `docker compose -f docker-compose.yml -f docker-compose.amd.yml up -d`
 
 The tracked `bots/bot_or_1` and `bots/bot_or_2` folders already exist (`.keep` files), so no manual folder creation is needed.
 
