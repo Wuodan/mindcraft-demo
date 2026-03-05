@@ -36,6 +36,9 @@ Small user-focused demo setup for [Mindcraft](https://github.com/mindcraft-bots/
    ```
 
 2. Start (pick one):
+
+   If your system has a supported GPU, prefer the matching GPU startup option for faster Ollama inference.
+   This requires host-side GPU setup first (OS drivers + Docker GPU container support, for example NVIDIA Container Toolkit or AMD/ROCm container setup), which is not covered in this repo.
   
    - CPU only:  
      ```shell
