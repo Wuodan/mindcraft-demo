@@ -57,6 +57,12 @@ Small user-focused demo setup for [Mindcraft](https://github.com/mindcraft-bots/
      docker compose -f docker-compose.yml -f docker-compose.amd.yml up -d
      ```
 
+## Access
+
+- Minecraft server: `localhost:${MC_SERVER_PORT}` (default `localhost:55916`)
+- Mindcraft UI: `http://localhost:${MINDCRAFT_UI_PORT}` (default [http://localhost:18080](http://localhost:18080))
+- Dynmap: `http://localhost:${DYNMAP_HOST_PORT}` (default [http://localhost:8123](http://localhost:8123))
+
 ## First Start Is Slow (Expected)
 
 The first startup can take several minutes because:
@@ -83,6 +89,10 @@ Most users can keep `.env` unchanged.
 
 - Minecraft admin usernames:
   - set `OPS` (comma-separated), for example `OPS=DeKuen` or `OPS=DeKuen,OtherUser`
+- Host ports (if defaults are already in use):
+  - `MC_SERVER_PORT` (default `55916`)
+  - `MINDCRAFT_UI_PORT` (default `18080`)
+  - `DYNMAP_HOST_PORT` (default `8123`)
 - Linux only, if your user is not `1000:1000`:
   - set `BOT_UID` and `BOT_GID` to your actual ids (`id -u`, `id -g`)
 - If you want another upstream source/branch for image build:
