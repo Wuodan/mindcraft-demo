@@ -1,7 +1,6 @@
 .vscode/
 .idea/
 .env
-keys.json
 bots/**
 !bots/**/
 !bots/**/.keep

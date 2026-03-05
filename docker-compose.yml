@@ -69,6 +69,8 @@ services:
       ollama-pull:
         condition: service_completed_successfully
     restart: unless-stopped
+    env_file:
+      - .env
     environment:
       SETTINGS_JSON: |
         {
@@ -84,7 +86,6 @@ services:
           "log_all_prompts": true
         }
     volumes:
-      - ./keys.json:/app/keys.json
       - ./bots/bot_or_1:/app/bots/bot_or_1
       - ./profiles/bot_or_1.json:/app/profiles/bot_or_1.json
     ports:

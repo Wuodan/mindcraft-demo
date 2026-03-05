@@ -17,17 +17,22 @@ This repo keeps only local runtime artifacts (compose, profiles, minecraft confi
 
 ## Use
 
-1. Prepare keys:
-   - `cp keys.example.json keys.json`
-   - set `OPENROUTER_API_KEY` in `keys.json` or via environment variable
-2. Set host user mapping:
-   - `BOT_UID=$(id -u)`
-   - `BOT_GID=$(id -g)`
-3. Create host bind-mount directories as your user:
+1. Create your local `.env` file:
+   - `cp .env.example .env`
+2. Set host user mapping in `.env`:
+   - `BOT_UID=<your uid>` (for example `1000`)
+   - `BOT_GID=<your gid>` (for example `1000`)
+3. Add API keys to `.env` as needed:
+   - Upstream key names are listed in:
+     - `https://raw.githubusercontent.com/mindcraft-bots/mindcraft/refs/heads/develop/keys.example.json`
+   - Syntax example:
+     - `OPENROUTER_API_KEY=sk-or-v1-...`
+     - `OPENAI_API_KEY=...`
+4. Create host bind-mount directories as your user:
    - `mkdir -p bots/bot_or_1`
-4. Optional branch override (default is `develop`):
-   - `export MINDCRAFT_REF=develop`
-5. Start with one of these modes:
+5. Optional upstream branch override in `.env`:
+   - `MINDCRAFT_REF=develop`
+6. Start with one of these modes:
    - No GPU / CPU only:
      - `docker compose up --build`
    - NVIDIA GPU:
@@ -38,4 +43,11 @@ This repo keeps only local runtime artifacts (compose, profiles, minecraft confi
 ## Notes
 
 - `bots/` is mounted into the container for generated action code/runtime state.
-- `keys.json` and `profiles/` are mounted into `/app` in the bot container.
+- API keys are read from container environment variables via `.env` (`env_file` in compose), not from `keys.json`.
+- Upstream default settings come from:
+  - `https://raw.githubusercontent.com/mindcraft-bots/mindcraft/refs/heads/develop/settings.js`
+- This repo overrides selected settings via `SETTINGS_JSON` in `docker-compose.yml`.
+- You can extend overrides by adding fields to that JSON object, for example:
+  - `"max_messages": 25`
+  - `"num_examples": 4`
+  - `"chat_bot_messages": false`
