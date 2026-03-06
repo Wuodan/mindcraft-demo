@@ -13,10 +13,13 @@ services:
       # SEED to spawn at a village (from https://beebom.com/best-minecraft-seeds/ -> 2. Three Villages and a Cherry Grove)
       # SEED: "5348024562502568"
       # SPAWN: "-34,122,-26"
-      # Flat map for construction tasks
+      # Flat map and peaceful for construction tasks
       LEVEL_TYPE: "flat"
-      # Make the bots operator for pre-filling bot inventory for tasks (equivalent to "Allow Commands: ON" in vanilla MC LAN servers)
-      OPS: "bot_1,bot_2"
+      DIFFICULTY: "peaceful"
+      # In offline mode, OPS is unreliable; grant bot operators via startup RCON commands instead.
+      RCON_CMDS_STARTUP: |-
+        op bot_1
+        op bot_2
       # DynMap plugin
       PLUGINS: "https://www.curseforge.com/api/v1/mods/31620/files/7460127/download"
     volumes:

@@ -141,6 +141,9 @@ For non-Ollama providers:
 - add matching API key(s) to `.env`
 - optionally remove `ollama` / `ollama-pull` services and related `depends_on` if you do not want local Ollama
 
+Bot operators (`bot_1`, `bot_2`) are auto-granted at startup.  
+To disable this, remove `RCON_CMDS_STARTUP` (or the `op ...` lines) from `docker-compose.yml`.
+
 ## Settings Override
 
 Mindcraft default settings:
