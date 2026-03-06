@@ -104,27 +104,13 @@ Most users can keep `.env` unchanged.
   - key names: `https://raw.githubusercontent.com/mindcraft-bots/mindcraft/refs/heads/develop/keys.example.json`
   - syntax example: `OPENROUTER_API_KEY=sk-or-v1-...`
 
-## Grant Minecraft Admin
-
-Run once after startup:
-
-```shell
-docker compose exec minecraft rcon-cli op <your_minecraft_username>
-```
-
-If you only want a user to spectate (without giving admin), this is enough:
-
-```shell
-docker compose exec minecraft rcon-cli gamemode spectator <your_minecraft_username>
-```
-
-## Watch Bots In-Game (Minecraft Beginner Steps)
+## Watch Bots In-Game
 
 After the server is running, this is a simple way to observe a bot from inside Minecraft Java:
 
-1. Become admin/operator (see section above), or have an admin run:
-   ```text
-   /gamemode spectator <your_minecraft_username>
+1. Become admin/operator:
+   ```shell
+   docker compose exec minecraft rcon-cli op <your_minecraft_username>
    ```
 2. Join the server at `localhost:${MC_SERVER_PORT}` (default `localhost:55916`).
 3. Switch to spectator mode:
@@ -135,14 +121,10 @@ After the server is running, this is a simple way to observe a bot from inside M
    ```text
    /tp bot_1
    ```
-5. Quickly left-click `bot_1` (attack button) to start spectating that entity.
-   - Minecraft term: this is called spectating an entity (also known as "mob view" in spectator mode docs).
+5. Quickly left-click `bot_1` to start spectating that entity.
+   - Minecraft term: this is called spectating an entity (also known as "mob view").
 6. Press `F5` repeatedly to cycle camera view modes.
 7. Press `Left Shift` (default dismount key) to stop spectating and return to free-fly spectator mode.
-
-Permissions note for non-admin users:
-- On Java Edition, `/gamemode` requires permission level 2.
-- Non-admin players cannot run `/gamemode spectator` unless an admin grants the needed permission (for example via operator level or a permissions plugin).
 
 ## Customize Bots
 
