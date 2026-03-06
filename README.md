@@ -1,4 +1,4 @@
-# Mindcraft-Test
+# Mindcraft-Demo
 
 Small user-focused demo setup for [Mindcraft](https://github.com/mindcraft-bots/mindcraft):
 - Minecraft server in Docker ([PaperMC](https://papermc.io/) + [Dynmap plugin](https://www.curseforge.com/minecraft/bukkit-plugins/dynmap))
@@ -16,13 +16,13 @@ Small user-focused demo setup for [Mindcraft](https://github.com/mindcraft-bots/
 1. Clone this repo:
 
    ```shell
-   git clone https://github.com/Wuodan/mindcraft-test.git
+   git clone https://github.com/Wuodan/mindcraft-demo.git
    ```
 
 2. Enter the project folder:
 
    ```shell
-   cd mindcraft-test
+   cd mindcraft-demo
    ```
 
 3. Check model suitability before first startup:
