@@ -58,6 +58,7 @@ services:
         done
 
   bots:
+    pull_policy: never
     build:
       context: ${MINDCRAFT_REPO:-https://github.com/mindcraft-bots/mindcraft.git}#${MINDCRAFT_REF:-develop}
       dockerfile: Dockerfile
