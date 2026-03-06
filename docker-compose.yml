@@ -63,7 +63,7 @@ services:
   bots:
     pull_policy: never
     build:
-      context: ${MINDCRAFT_REPO:-https://github.com/mindcraft-bots/mindcraft.git}#${MINDCRAFT_REF:-develop}
+      context: "${MINDCRAFT_REPO:-https://github.com/mindcraft-bots/mindcraft.git}#${MINDCRAFT_REF:-develop}"
       dockerfile: Dockerfile
     image: mindcraft-bot:local
     user: "${BOT_UID:-1000}:${BOT_GID:-1000}"
@@ -75,6 +75,13 @@ services:
       ollama-pull:
         condition: service_completed_successfully
     restart: unless-stopped
+    command: [
+      "node",
+      "main.js",
+      "--task_path",
+      "tasks/basic/single_agent.json",
+      "--task_id",
+      "gather_oak_logs"]
     env_file:
       - .env
     environment:
@@ -87,7 +94,7 @@ services:
             "./profiles/bot_1.json",
             "./profiles/bot_2.json"
           ],
-          "init_message": "${INIT_MESSAGE:-Start autonomous goal mode: obtain and equip full diamond armor and one diamond sword while staying alive. Prioritize survival and sustainability: keep food available, avoid low-health risks, and maintain a safe base with storage. Suggested progression: basic tools -> iron tools/armor and shield -> diamond mining -> craft/equip full diamond kit. Only end the goal when full diamond armor is equipped and a diamond sword is ready.}",
+          "init_message": "${INIT_MESSAGE:-Respond with hello world and your name}",
           "chat_ingame": true,
           "allow_insecure_coding": true,
           "narrate_behavior": true,
@@ -99,6 +106,7 @@ services:
       - ./bots/bot_2:/app/bots/bot_2
       - ./profiles/bot_1.json:/app/profiles/bot_1.json
       - ./profiles/bot_2.json:/app/profiles/bot_2.json
+      - ./tasks-demo:/app/tasks-demo
     ports:
       - "${MINDCRAFT_UI_PORT:-18080}:8080"
 

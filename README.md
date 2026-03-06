@@ -32,7 +32,6 @@ Small user-focused demo setup for [Mindcraft](https://github.com/mindcraft-bots/
    - If your GPU has at least 8GB VRAM: you can usually continue directly.
    - If your GPU has less VRAM, or you run CPU-only: pick lighter models first using [`MODEL_SELECTION_PROMPT_GUIDE.md`](MODEL_SELECTION_PROMPT_GUIDE.md), then update:
      - `profiles/bot_1.json`
-     - `profiles/bot_2.json`
      - `docker-compose.yml` (`ollama-pull` service `OLLAMA_MODELS: "..."`)
 
 4. Start (pick one):
@@ -83,6 +82,12 @@ docker system df -v
 
 Most users can keep `.env` unchanged.
 
+Default behavior now uses Mindcraft task mode (`--task_path` + `--task_id`) with upstream's basic task:
+- `tasks/basic/single_agent.json`
+- task id: `gather_oak_logs`
+
+This follows the upstream Tasks flow and keeps the demo feasible for local Ollama models.
+
 - Host ports (if defaults are already in use):
   - `MC_SERVER_PORT` (default `55916`)
   - `MINDCRAFT_UI_PORT` (default `18080`)
@@ -92,7 +97,9 @@ Most users can keep `.env` unchanged.
 - If you want another upstream source/branch for image build:
   - set `MINDCRAFT_REPO`
   - set `MINDCRAFT_REF`
-- Bot startup objective prompt:
+- Task selection:
+  - edit the `bots.command` arguments in `docker-compose.yml`
+- Bot startup objective prompt (optional additional context):
   - set `INIT_MESSAGE`
 - If you use non-Ollama providers, add API keys in `.env`:
   - key names: `https://raw.githubusercontent.com/mindcraft-bots/mindcraft/refs/heads/develop/keys.example.json`
@@ -164,25 +171,6 @@ Standard stop (keep data and pulled images):
 docker compose down
 ```
 
-Full cleanup (remove containers, network, local image, and pulled base images):
-
-```shell
-# Stop and remove containers + network
-docker compose down --remove-orphans
-
-# Remove local project image
-docker image rm mindcraft-bot:local
-
-# Remove pulled base images used by this project
-docker image rm itzg/minecraft-server:java25
-docker image rm ollama/ollama:latest
-# If you used AMD/ROCm startup:
-docker image rm ollama/ollama:rocm
-
-# Optional: clean Docker build cache
-docker builder prune -f
-```
-
 Remove data of bots:
 ```shell
 rm -rf bots/*/*
@@ -199,4 +187,20 @@ Remove Ollama models:
 # WARNING: this deletes Ollama model data.
 # Next startup will need to re-download models (can take a long time).
 docker compose down -v ollama
+```
+
+Image cleanup (remove local image and pulled base images):
+
+```shell
+# Remove local project image
+docker image rm mindcraft-bot:local
+
+# Remove pulled base images used by this project
+docker image rm itzg/minecraft-server:java25
+docker image rm ollama/ollama:latest
+# If you used AMD/ROCm startup:
+docker image rm ollama/ollama:rocm
+
+# Optional: clean Docker build cache
+docker builder prune -f
 ```
