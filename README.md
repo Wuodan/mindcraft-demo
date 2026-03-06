@@ -163,12 +163,27 @@ Another related setting in the same settings file:
 
 ## Cleanup
 
+Standard stop (keep data and pulled images):
+
 ```shell
 # Stop and remove project containers + network
 docker compose down
+```
+
+Full cleanup (remove containers, network, local image, and pulled base images):
+
+```shell
+# Stop and remove containers + network
+docker compose down --remove-orphans
 
 # Remove local project image
 docker image rm mindcraft-bot:local
+
+# Remove pulled base images used by this project
+docker image rm itzg/minecraft-server:java25
+docker image rm ollama/ollama:latest
+# If you used AMD/ROCm startup:
+docker image rm ollama/ollama:rocm
 
 # Optional: clean Docker build cache
 docker builder prune -f
@@ -181,12 +196,11 @@ rm -rf bots/*/*
 
 Remove Minecraft server data (the world):
 ```shell
-# WARNING: this deletes Minecraft world dataa.
+# WARNING: this deletes Minecraft world data.
 docker compose down -v minecraft
 ```
 
 Remove Ollama models:
-
 ```shell
 # WARNING: this deletes Ollama model data.
 # Next startup will need to re-download models (can take a long time).
