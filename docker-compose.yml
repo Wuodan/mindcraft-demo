@@ -1,4 +1,4 @@
-x-ollama-models: &ollama_models "embeddinggemma sweaterdog/andy-4:q2_k qwen2.5-coder:3b"
+x-ollama-models: &ollama_models "embeddinggemma sweaterdog/andy-4:q2_k qwen2.5-coder:7b"
 
 services:
   minecraft:
@@ -7,15 +7,18 @@ services:
       EULA: "TRUE"
       TYPE: PAPER
       VERSION: "1.21.6"
-      ONLINE_MODE: "FALSE"
       SERVER_PORT: "${MC_SERVER_PORT:-55916}"
-      # For pre-filling bot inventory for tasks
-      ENABLE_COMMAND_BLOCK: "true"
+      # Unsafe auth but otherwise bots must be registered on Azure AD servers
+      ONLINE_MODE: "FALSE"
+      # SEED to spawn at a village (from https://beebom.com/best-minecraft-seeds/ -> 2. Three Villages and a Cherry Grove)
+      # SEED: "5348024562502568"
+      # SPAWN: "-34,122,-26"
+      # Flat map for construction tasks
+      LEVEL_TYPE: "flat"
+      # Make the bots operator for pre-filling bot inventory for tasks (equivalent to "Allow Commands: ON" in vanilla MC LAN servers)
+      OPS: "bot_1,bot_2"
       # DynMap plugin
       PLUGINS: "https://www.curseforge.com/api/v1/mods/31620/files/7460127/download"
-      # SEED to spawn at a village (from https://beebom.com/best-minecraft-seeds/ -> 2. Three Villages and a Cherry Grove)
-      SEED: "5348024562502568"
-      SPAWN: "-34,122,-26"
     volumes:
       - minecraft-data:/data
       - ./minecraft-config/bukkit.yml:/data/bukkit.yml
@@ -80,19 +83,21 @@ services:
       ollama-pull:
         condition: service_completed_successfully
     restart: on-failure
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     command: [
       "node",
       "main.js",
       "--task_path",
-      "tasks/construction_tasks/custom/pyramid.json",
+      "tasks/construction_tasks/custom/tasks.json",
       "--task_id",
-      "pyramid"]
+      "small_church"]
     env_file:
       - .env
     environment:
       SETTINGS_JSON: |
         {
-          "host": "minecraft",
+          "host": "host.docker.internal",
           "port": ${MC_SERVER_PORT:-55916},
           "auto_open_ui": false,
           "profiles": [
