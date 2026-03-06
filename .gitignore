@@ -1,6 +1,5 @@
 .vscode/
 .idea/
-.env
 bots/**
 !bots/**/
 !bots/**/.keep

@@ -35,13 +35,7 @@ Small user-focused demo setup for [Mindcraft](https://github.com/mindcraft-bots/
      - `profiles/bot_2.json`
      - `docker-compose.yml` (`ollama-pull` service `OLLAMA_MODELS: "..."`)
 
-4. Copy env template:
-   
-   ```shell
-   cp .env.example .env
-   ```
-
-5. Start (pick one):
+4. Start (pick one):
 
    If your system has a supported GPU, prefer the matching GPU startup option for faster Ollama inference.
    This requires host-side GPU setup first (OS drivers + Docker GPU container support, for example NVIDIA Container Toolkit or AMD/ROCm container setup), which is not covered in this repo.
