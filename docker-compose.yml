@@ -1,3 +1,5 @@
+x-ollama-models: &ollama_models "embeddinggemma Sweaterdog/Andy-4:q3_k_m qwen2.5-coder:3b"
+
 services:
   minecraft:
     image: itzg/minecraft-server:java25
@@ -45,7 +47,7 @@ services:
     restart: "no"
     environment:
       OLLAMA_HOST: http://ollama:11434
-      OLLAMA_MODELS: "${OLLAMA_MODELS:-embeddinggemma Sweaterdog/Andy-4:latest qwen2.5-coder:7b}"
+      OLLAMA_MODELS: *ollama_models
     volumes:
       - ollama-data:/root/.ollama
     entrypoint:
