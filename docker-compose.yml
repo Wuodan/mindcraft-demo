@@ -42,6 +42,7 @@ services:
     restart: "no"
     environment:
       OLLAMA_HOST: http://ollama:11434
+      OLLAMA_MODELS: "${OLLAMA_MODELS:-embeddinggemma Sweaterdog/Andy-4:latest qwen2.5-coder:3b}"
     volumes:
       - ollama-data:/root/.ollama
     entrypoint:
@@ -52,8 +53,7 @@ services:
           ollama list >/dev/null 2>&1 && break
           sleep 2
         done
-        MODELS="embeddinggemma Sweaterdog/Andy-4:latest qwen2.5-coder:3b"
-        for model in $$MODELS; do
+        for model in $${OLLAMA_MODELS}; do
           ollama show "$$model" >/dev/null 2>&1 || ollama pull "$$model"
         done
 

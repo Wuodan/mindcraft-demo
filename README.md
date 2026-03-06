@@ -11,7 +11,7 @@ Small user-focused demo setup for [Mindcraft](https://github.com/mindcraft-bots/
 - [Docker](https://www.docker.com/) installed and running
 - Optional: Minecraft Java client `1.21.6` if you want to join the server and watch bots in-game
 
-## Getting Started
+## Quickstart
 
 1. Clone this repo:
 
@@ -25,17 +25,23 @@ Small user-focused demo setup for [Mindcraft](https://github.com/mindcraft-bots/
    cd mindcraft-test
    ```
 
-3. Continue with Quickstart below.
+3. Check model suitability before first startup:
 
-## Quickstart
+   Default models are tuned for a machine with an NVIDIA GPU and about 8GB VRAM.
 
-1. Copy env template:
+   - If your GPU has at least 8GB VRAM: you can usually continue directly.
+   - If your GPU has less VRAM, or you run CPU-only: pick lighter models first using [`MODEL_SELECTION_PROMPT_GUIDE.md`](MODEL_SELECTION_PROMPT_GUIDE.md), then update:
+     - `profiles/bot_1.json`
+     - `profiles/bot_2.json`
+     - `docker-compose.yml` (`ollama-pull` service `OLLAMA_MODELS: "..."`)
+
+4. Copy env template:
    
    ```shell
    cp .env.example .env
    ```
 
-2. Start (pick one):
+5. Start (pick one):
 
    If your system has a supported GPU, prefer the matching GPU startup option for faster Ollama inference.
    This requires host-side GPU setup first (OS drivers + Docker GPU container support, for example NVIDIA Container Toolkit or AMD/ROCm container setup), which is not covered in this repo.

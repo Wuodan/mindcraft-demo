@@ -115,7 +115,7 @@ Update:
 
 - `profiles/bot_1.json`
 - `profiles/bot_2.json`
-- `docker-compose.yml` (`ollama-pull` service, `MODELS="..."`)
+- `docker-compose.yml` (`ollama-pull` service, `OLLAMA_MODELS: "..."`)
 
 Replace only these model names:
 
