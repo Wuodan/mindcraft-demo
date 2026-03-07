@@ -106,6 +106,7 @@ services:
           "profiles": [
             "./profiles/bot_1.json"
           ],
+          "load_memory": true,
           "init_message": "${INIT_MESSAGE:-Respond with hello world and your name}",
           "chat_ingame": true,
           "allow_insecure_coding": true,
