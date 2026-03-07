@@ -109,8 +109,11 @@ services:
           "init_message": "${INIT_MESSAGE:-Respond with hello world and your name}",
           "chat_ingame": true,
           "allow_insecure_coding": true,
-          "narrate_behavior": true,
-          "chat_bot_messages": true,
+          "code_timeout_mins": 2,
+          "max_messages": 8,
+          "num_examples": 1,
+          "narrate_behavior": false,
+          "chat_bot_messages": false,
           "log_all_prompts": true
         }
     volumes:
