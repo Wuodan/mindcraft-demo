@@ -1,4 +1,4 @@
-x-ollama-models: &ollama_models "embeddinggemma sweaterdog/andy-4:q3_k_m qwen2.5-coder:7b"
+x-ollama-models: &ollama_models "embeddinggemma sweaterdog/andy-4:q5_k_m qwen2.5-coder:7b"
 
 services:
   minecraft:
