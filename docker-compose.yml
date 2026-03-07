@@ -16,6 +16,7 @@ services:
       # Flat map and peaceful for construction tasks
       LEVEL_TYPE: "flat"
       DIFFICULTY: "peaceful"
+      SPAWN: "-1783, 68, 1294, 3"
       # In offline mode, OPS is unreliable; grant bot operators via startup RCON commands instead.
       RCON_CMDS_STARTUP: |-
         op bot_1
