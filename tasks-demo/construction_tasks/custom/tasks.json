@@ -2,9 +2,9 @@
   "small_church": {
     "type": "construction",
     "goal": "Make a house with the blueprint below",
-    "conversation": "Make a house with the blueprint",
+    "conversation": "Let's share materials and make a house with the blueprint",
     "timeout": 9007199254740991,
-    "agent_count": 1,
+    "agent_count": 2,
     "blueprint": {
       "materials": {
         "oak_planks": 140,
@@ -20,7 +20,7 @@
           "level": 0,
           "coordinates": [
             -18,
-            -60,
+            65,
             30
           ],
           "placement": [
@@ -120,7 +120,7 @@
           "level": 1,
           "coordinates": [
             -18,
-            -60,
+            65,
             30
           ],
           "placement": [
@@ -220,7 +220,7 @@
           "level": 2,
           "coordinates": [
             -18,
-            -60,
+            65,
             30
           ],
           "placement": [
@@ -320,7 +320,7 @@
           "level": 3,
           "coordinates": [
             -18,
-            -60,
+            65,
             30
           ],
           "placement": [
@@ -420,7 +420,7 @@
           "level": 4,
           "coordinates": [
             -18,
-            -60,
+            65,
             30
           ],
           "placement": [
@@ -520,7 +520,7 @@
           "level": 5,
           "coordinates": [
             -18,
-            -60,
+            65,
             30
           ],
           "placement": [
@@ -620,7 +620,7 @@
           "level": 6,
           "coordinates": [
             -18,
-            -60,
+            65,
             30
           ],
           "placement": [
@@ -720,7 +720,7 @@
           "level": 7,
           "coordinates": [
             -18,
-            -60,
+            65,
             30
           ],
           "placement": [
@@ -820,7 +820,7 @@
           "level": 8,
           "coordinates": [
             -18,
-            -60,
+            65,
             30
           ],
           "placement": [
@@ -920,7 +920,7 @@
           "level": 9,
           "coordinates": [
             -18,
-            -60,
+            65,
             30
           ],
           "placement": [
@@ -1023,7 +1023,9 @@
         "oak_planks": 140,
         "oak_door": 2,
         "quartz_block": 1,
-        "torch": 4,
+        "torch": 4
+      },
+      "1": {
         "stone_bricks": 108,
         "oak_stairs": 16,
         "glass_pane": 12

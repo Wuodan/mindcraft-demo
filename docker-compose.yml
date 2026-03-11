@@ -1,4 +1,4 @@
-x-ollama-models: &ollama_models "embeddinggemma sweaterdog/andy-4:q5_k_m qwen2.5-coder:7b"
+x-ollama-models: &ollama_models "embeddinggemma sweaterdog/andy-4:latest qwen2.5-coder:7b"
 
 services:
   minecraft:
@@ -14,9 +14,10 @@ services:
       # SEED: "5348024562502568"
       # SPAWN: "-34,122,-26"
       # Flat map and peaceful for construction tasks
-      LEVEL_TYPE: "flat"
+      # LEVEL_TYPE: "flat"
       DIFFICULTY: "peaceful"
-      SPAWN: "-1783, 68, 1294, 3"
+      SEED: "1246877709"
+      SPAWN: "0,80,0"
       # In offline mode, OPS is unreliable; grant bot operators via startup RCON commands instead.
       RCON_CMDS_STARTUP: |-
         op bot_1
@@ -37,7 +38,7 @@ services:
     image: ollama/ollama:latest
     restart: unless-stopped
     environment:
-      OLLAMA_FLASH_ATTENTION: "1"
+      OLLAMA_FLASH_ATTENTION: 1
     ports:
       - "11434:11434"
     volumes:
@@ -105,13 +106,14 @@ services:
           "port": ${MC_SERVER_PORT:-55916},
           "auto_open_ui": false,
           "profiles": [
-            "./profiles/bot_1.json"
+            "./profiles/bot_1.json",
+            "./profiles/bot_2.json"
           ],
           "load_memory": true,
           "init_message": "${INIT_MESSAGE:-Respond with hello world and your name}",
           "chat_ingame": true,
           "allow_insecure_coding": true,
-          "code_timeout_mins": 2,
+          "code_timeout_mins": 10,
           "max_messages": 8,
           "num_examples": 1,
           "narrate_behavior": false,
